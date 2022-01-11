@@ -1,0 +1,100 @@
+<br><br>
+
+<section class="section-content padding-y bg">
+  <div class="container">
+    <article class="card">
+      <div class="card-body">
+        <div class="row">
+          <aside class="col-md-7">
+            <article class="gallery-wrap">
+              <div>
+                <div class="img-big-wrap">
+                <a href="#"> <img [src]="productAndDiscount.imageUrl"></a>
+              </div> <!-- card img-big-wrap.// -->
+              </div>
+              <!-- <div class="thumbs-wrap">
+                  <a href="#" class="item-thumb"> <img src="assets/images/items/3.jpg"></a>
+                  <a href="#" class="item-thumb"> <img src="assets/images/items/3.jpg"></a>
+                  <a href="#" class="item-thumb"> <img src="assets/images/items/3.jpg"></a>
+                  <a href="#" class="item-thumb"> <img src="assets/images/items/3.jpg"></a>
+              </div> thumbs-wrap .// -->
+            </article> <!-- gallery-wrap .end// -->
+          </aside>
+          <main class="col-md-6">
+            <article>
+              <h3 class="title">{{productAndDiscount.productName}}</h3>
+              <div>
+              </div>
+              <hr>
+              <div class="mb-3">
+                <h6><div> {{productAndDiscount.productDescription}} </div></h6>
+                <!-- <div style="font-size: small;">SKU: {{productAndDiscount.productSku}}</div> -->
+              </div>
+              <div class="form-group">
+              </div>
+              <div class="mb-3">
+                <div >
+                  <!--              <var class="price h4">${{productAndDiscount.productCost}}</var> <br>-->
+                  <h6 class="card-text">{{productAndDiscount.productCost-productAndDiscount.productCost*(productAndDiscount.discountPercentage / 100) | currency }}</h6>
+                  <h6 class ="old-product-price" *ngIf="productAndDiscount.discountPercentage > 1.0" >{{productAndDiscount.productCost | currency}} </h6>
+                </div>
+              </div> <!-- price-detail-wrap .// -->
+              <div class="mb-4">
+                <div class="counter">
+                  <span class="down" (click)='decreaseCount()'>-</span>
+                  <input type="text" [(ngModel)]="counter" (change)="qtyChange()">
+                  <span class="up"  (click)='increaseCount()'>+</span>
+                </div>
+                <button class="btn btn-danger" (click)="goToCheckout()">Go to Cart</button>
+                <br><br>
+                <h5 class="item-details ">Available: {{productAndDiscount.productQty}}</h5>
+                <div style="font-size: small;">SKU: {{productAndDiscount.productSku}}</div>
+
+              </div>
+            </article> <!-- product-info-aside .// -->
+          </main> <!-- col.// -->
+        </div> <!-- row.// -->
+      </div> <!-- card-body.// -->
+    </article>
+    <article class="card mt-5">
+      <div class="card-body">
+        <!-- <div class="row">
+            <aside class="col-md-6">
+                <h5>Parameters</h5>
+                <dl class="row">
+                      <dt class="col-sm-3">Display</dt>
+                      <dd class="col-sm-9">13.3-inch LED-backlit display with IPS</dd>
+                      <dt class="col-sm-3">Processor</dt>
+                      <dd class="col-sm-9">2.3GHz dual-core Intel Core i5</dd>
+                      <dt class="col-sm-3">Camera</dt>
+                      <dd class="col-sm-9">720p FaceTime HD camera</dd>
+                      <dt class="col-sm-3">Memory</dt>
+                      <dd class="col-sm-9">8 GB RAM or 16 GB RAM</dd>
+                      <dt class="col-sm-3">Graphics</dt>
+                      <dd class="col-sm-9">Intel Iris Plus Graphics 640</dd>
+                </dl>
+            </aside>
+            <aside class="col-md-6">
+                <h5>Features</h5>
+                <ul class="list-check">
+                    <li>Best performance of battery</li>
+                    <li>5 years warranty for this product</li>
+                    <li>Amazing features and high quality</li>
+                    <li>Best performance of battery</li>
+                    <li>5 years warranty for this product</li>
+                </ul>
+            </aside>
+        </div> row.// -->
+        <hr>
+        <p>
+          Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+          tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+          quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+          consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
+          cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
+          proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+        </p>
+      </div> <!-- card-body.// -->
+    </article>
+  </div>
+</section>

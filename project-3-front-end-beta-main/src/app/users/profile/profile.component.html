@@ -1,0 +1,346 @@
+<!-- <div class="container" *ngIf="currentUser; else loggedOut">
+    <header class="jumbotron">
+      <h3>
+          Hello, 
+        <strong>{{ currentUser.firstName }}</strong>
+      </h3>
+    </header>
+    <p>
+      <strong>Token:</strong>
+      {{ currentUser.accessToken.substring(0, 20) }} ...
+      {{ currentUser.accessToken.substr(currentUser.accessToken.length - 20) }}
+    </p>
+    <p>
+      <strong>Email:</strong>
+      {{ currentUser.email }}
+    </p>
+    <strong>Roles:</strong>
+    <ul>
+      <li *ngFor="let role of currentUser.roles">
+        {{ role }}
+      </li>
+    </ul>
+  </div>
+  
+  <ng-template #loggedOut>
+    Please login.
+  </ng-template> 
+  <br> -->
+  {{ password }}
+  <div class="container bootstrap snippets bootdey">
+    <div class="panel-body inf-content">
+        <div class="row">
+            <div class="col-md-4">
+                <img alt="" style="width:400px;" title="" class="img-circle img-thumbnail isTooltip" src="{{currentUser.imageUrl}}">
+                <div>
+                    <button 
+                          type="submit" 
+                          class="btn btn-dark mr-2"
+                          (click)="toggleAdd()" 
+                          >Edit Profile Picture</button>
+                  
+                <div *ngIf="flag" > 
+                  <!-- <div>
+                    <label for="image_url" class="form-label" class="asterixRequired"> Select Profile Picture:</label>
+                    <input #imageInput type="file" formControlName="image_url" class="form-control" id="InputProductImgUrl"
+                      aria-describedby="productImgUrlHelp" accept="image/*" (change)="uploadUserImage($event)">
+                      Profile Picture is Optional            
+                    </div> -->
+                </div> 
+             </div>
+            </div>
+            <br>
+            <div class="col-md-6">
+                <h2><strong>User Information</strong></h2><br>
+                <div class="table-responsive">
+                <table class="table table-user-information">
+                    <tbody>
+                        <tr>
+                            <td>
+                                <strong>
+                                    <span class="glyphicon glyphicon-asterisk text-primary"></span>
+                                    ID #:                                                
+                                </strong>
+                            </td>
+                            <td class="text-secondary">
+                                {{currentUser.user_id}}                             
+                            </td> 
+                            <td>
+                                <div id="myDIV" class="form-group">
+                                    <label for="user_id">User ID : {{currentUser.user_id}}</label>
+                                  
+                                     <!--   {{currentUser.user_id}} -->
+                                 </div>
+                                </td>  
+                                <td>
+                                    <button 
+                                        type="button" 
+                                        class="btn btn-primary small"
+                                        (click)="updatedUser()">
+                                        <span class="material-icons">edit</span>
+                                    </button>
+                                </td>                   
+                        </tr>
+                        <tr>    
+                            <td>
+                                
+                                <strong>
+                                    <span class="glyphicon glyphicon-user  text-primary"></span>    
+                                    First Name:                                                 
+                                </strong>
+                            </td>
+                            <td class="text-secondary">
+                                {{currentUser.first_name}}    
+                                
+                            </td>
+                            <td>
+                               
+                                <div class="form-group">
+                                    <label for="first_name">First Name</label>
+                                    <input type="text" 
+                                            class="form-control" 
+                                            id="first_name"  
+                                            name="first_name"
+                                            placeholder={{currentUser.first_name}}
+                                            [(ngModel)]="editUser.first_name">
+                                           
+                                
+                                </div>
+                            </td>
+                        </tr>
+                        <tr>        
+                            <td>
+                                <strong>
+                                    <span class="glyphicon glyphicon-cloud text-primary"></span>  
+                                    Last Name:                                                 
+                                </strong>
+                            </td>
+                            <td class="text-secondary">
+                                {{currentUser.last_name}}
+                            </td>
+                            <td>
+                                <div class="form-group">
+                                    <label for="last_name">Last Name</label>
+                                    <input type="text" 
+                                            class="form-control" 
+                                            id="last_name"  
+                                            name="last_name"
+                                            placeholder={{currentUser.last_name}}
+                                            [(ngModel)]="editUser.last_name">
+                              </div>
+                            </td>
+                        </tr>
+                        <tr>        
+                            <td>
+                                <strong>
+                                    <span class="glyphicon glyphicon-bookmark text-primary"></span> 
+                                    Username:                                                
+                                </strong>
+                            </td>
+                            <td class="text-secondary">
+                                {{currentUser.username}} 
+                            </td>
+                            <td>
+                                <div class="form-group">
+                                    <label for="username">Username</label>
+                                    <input type="text" 
+                                            class="form-control" 
+                                            id="username"  
+                                            name="username"
+                                            placeholder={{currentUser.username}}
+                                            [(ngModel)]="editUser.username">
+                              </div>
+                            </td>
+                        </tr>
+                        <tr>        
+                            <td>
+                                <strong>
+                                    <span class="glyphicon glyphicon-envelope text-primary"></span> 
+                                    Email: 
+                                </strong>
+                            </td>
+                            <td class="text-secondary">
+                                {{currentUser.email}}
+                            </td>
+                            <td>
+                                <div class="form-group">
+                                    <label for="email">Email</label>
+                                    <input type="text" 
+                                            class="form-control" 
+                                            id="email"  
+                                            name="email"
+                                            placeholder={{currentUser.email}}
+                                            [(ngModel)]="editUser.email">
+                              </div>
+                            </td>
+                        </tr>     
+                        <tr>        
+                            <td>
+                                <strong>
+                                    <span class="glyphicon glyphicon-envelope text-primary"></span> 
+                                    Address:
+                                </strong>
+                            </td>
+                            <td class="text-secondary">
+                                {{currentUser.address}}
+                            </td>
+                            <td>
+                                <div class="form-group">
+                                    <label for="address">Address</label>
+                                    <input type="text" 
+                                            class="form-control" 
+                                            id="address"  
+                                            name="address"
+                                            placeholder={{currentUser.address}}
+                                            [(ngModel)]="editUser.address">
+                              </div>
+                            </td>
+                        </tr>  
+                        <tr>        
+                            <td>
+                                <strong>
+                                    <span class="glyphicon glyphicon-envelope text-primary"></span> 
+                                    Contact:
+                                </strong>
+                            </td>
+                            <td class="text-secondary">
+                                {{currentUser.contact}}
+                            </td>
+                            <td>
+                                <div class="form-group">
+                                    <label for="contact">Contact Number</label>
+                                    <input type="text" 
+                                            class="form-control" 
+                                            id="contact"  
+                                            name="contact"
+                                            placeholder={{currentUser.contact}}
+                                            [(ngModel)]="editUser.contact">
+                           </div>
+                            </td>
+                        </tr> 
+
+                        <tr>        
+                            <td>
+                                <strong>
+                                    <span class="glyphicon glyphicon-envelope text-primary"></span> 
+                                    Password: 
+                                </strong>
+                            </td>
+                            <td class="text-primary">Confirm Password
+                            </td>
+                            <td>
+                                <div class="form-group">
+                                    <label for="password">Password</label>
+                                <input type="password" 
+                                class="form-control" 
+                                id="password"  
+                                name="password"
+                                placeholder={{currentUser.password}}
+                                [(ngModel)]="editUser.password"> 
+                           </div>
+                         </td>
+                        </tr> 
+                    </tbody>
+                </table>
+            </div>
+        </div>
+   
+
+<!--<div class="card mt-5">
+<div>
+ <button 
+       type="submit" 
+       class="btn btn-secondary mr-2"
+       (click)="toggleAdd()" 
+       >Edit Profile</button>
+</div> 
+<div *ngIf="flag" > 
+ <form #updateForm="ngForm" class="form-group tm-5" (submit)="updatedUser()">
+   <div id="myDIV" class="form-group">
+      <label for="user_id">User ID :</label>
+      <input type="text" 
+      class="form-control" 
+      id="user_id"  
+      name="user_id"
+      placeholder={{currentUser.user_id}}
+      [(ngModel)]="editUser.user_id" readonly> 
+    </div>
+    <div class="form-group">
+          <label for="first_name">First Name</label>
+          <input type="text" 
+                  class="form-control" 
+                  id="first_name"  
+                  name="first_name"
+                  placeholder={{currentUser.first_name}}
+                  [(ngModel)]="editUser.first_name">
+    </div>
+    <div class="form-group">
+          <label for="last_name">Last Name</label>
+          <input type="text" 
+                  class="form-control" 
+                  id="last_name"  
+                  name="last_name"
+                  placeholder={{currentUser.last_name}}
+                  [(ngModel)]="editUser.last_name">
+    </div>
+    <div class="form-group">
+          <label for="email">Email</label>
+          <input type="text" 
+                  class="form-control" 
+                  id="email"  
+                  name="email"
+                  placeholder={{currentUser.email}}
+                  [(ngModel)]="editUser.email">
+    </div>
+    <!-- <div class="form-group">
+          <label for="password">Password</label>
+          <input type="password" 
+          class="form-control" 
+          id="password"  
+          name="password"
+          placeholder={{currentUser.password}}
+          [(ngModel)]="editUser.password"> 
+
+            {{ editUser.password }} 
+     </div>  
+    <div class="form-group">
+          <label for="username">Username</label>
+          <input type="text" 
+                  class="form-control" 
+                  id="username"  
+                  name="username"
+                  placeholder={{currentUser.username}}
+                  [(ngModel)]="editUser.username">
+    </div>
+    <div class="form-group">
+          <label for="address">Address</label>
+          <input type="text" 
+                  class="form-control" 
+                  id="address"  
+                  name="address"
+                  placeholder={{currentUser.address}}
+                  [(ngModel)]="editUser.address">
+    </div>
+    <div class="form-group">
+             <label for="contact">Contact Number</label>
+             <input type="text" 
+                     class="form-control" 
+                     id="contact"  
+                     name="contact"
+                     placeholder={{currentUser.contact}}
+                     [(ngModel)]="editUser.contact">
+    </div>
+
+ 
+    <button
+    type="submit" 
+    class="btn btn-secondary mb-2">Update</button>
+</form>
+</div>
+     
+</div>
+</div>  
+<div>
+   
+
+ </div> -->
